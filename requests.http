@@ -1,0 +1,63 @@
+#게시글 생성
+POST http://localhost:3000/blogs
+Content-Type: application/json
+
+{
+    "title": "처음 적은 블로그",
+    "content": "내용은 뭐라고 적을지 몰라서 대충 적고 있다",
+    "author": "안녕하세요"
+}
+
+
+###
+#게시글 모두 조회
+GET  http://localhost:3000/blogs
+
+###
+#조건에 맞는 게시글 모두 조회
+GET  http://localhost:3000/blogs?sort=oldest&count=3
+
+###
+#특정 ID 게시글 조회
+GET  http://localhost:3000/blogs/67caaac56d76e5750661f6c1
+
+
+###
+#특정 ID 게시글 수정
+PATCH  http://localhost:3000/blogs/67caaac56d76e5750661f6c1
+Content-Type: application/json
+
+{
+    "content" : "이 내용은 수정된 내용입니다.",
+}
+
+###
+#특정 ID 게시글 삭제
+DELETE http://localhost:3000/blogs/67caad8f3824827680861a63
+
+###
+#블로그에 댓글 작성
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "blogId": "67cab04e30bd6a564cc2e9d9",
+    "content": "내용은 뭐라고 적을지 몰라서 대충 적고 있다",
+    "author": "안녕하세요"
+}
+
+###
+#특정 블로그의 댓글 조회
+GET http://localhost:3000/comments/67cab102439845252266338f
+###
+#특정 댓글 수정
+PATCH  http://localhost:3000/comments/67cab102439845252266338f
+Content-Type: application/json
+
+{
+   "content": "수정된 댓글 내용"
+}
+
+###
+#특정 댓글 삭제
+DELETE  http://localhost:3000/comments/67cab102439845252266338f
